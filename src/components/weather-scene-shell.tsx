@@ -15,10 +15,13 @@ export function WeatherSceneShell({ weatherState }: WeatherSceneShellProps) {
 
     container.innerHTML = "";
 
-    const needsParticles = ["rain", "snow", "hail"].includes(weatherState);
+const needsParticles = ["rain", "snow", "hail", "flood"].includes(weatherState);
     if (!needsParticles) return;
 
-    const count = weatherState === "rain" ? 60 : weatherState === "hail" ? 40 : 80;
+const count = weatherState === "rain" ? 60 
+  : weatherState === "flood" ? 80
+  : weatherState === "hail" ? 40 
+  : 80;
 
     for (let i = 0; i < count; i++) {
       const p = document.createElement("div");
