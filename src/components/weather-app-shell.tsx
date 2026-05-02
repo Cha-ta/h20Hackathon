@@ -12,8 +12,8 @@ export function WeatherAppShell({ records }: WeatherAppShellProps) {
       <section className="website-shell" aria-label="Website homepage shell">
         <header className="site-header">
           <div className="site-mark">
-            <span className="site-mark__dot" aria-hidden="true" />
-            <span>San Joaquin Weather Time Machine</span>
+            <span className="site-mark__droplet" aria-hidden="true">💧</span>
+            <span>h2Show</span>
           </div>
         </header>
 

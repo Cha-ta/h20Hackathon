@@ -72,12 +72,10 @@ a {
   font-weight: 700;
 }
 
-.site-mark__dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #fff1ca 0%, var(--accent) 100%);
-  box-shadow: 0 0 18px rgba(255, 217, 140, 0.55);
+.site-mark__droplet {
+  font-size: 1.3rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 8px rgba(120, 200, 255, 0.6));
 }
 
 .site-nav {
