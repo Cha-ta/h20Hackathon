@@ -37,7 +37,7 @@ export function WeatherTimelineSlider({ records }: WeatherTimelineSliderProps) {
       </div>
 
       <div className="hero-scene-panel">
-        <WeatherSceneShell weatherState={record.state} />
+        <WeatherSceneShell weatherState={record.state} reservoir={record.metrics.reservoir} />
       </div>
 
       <div className="timeline-controls" aria-label="Timeline slider">
