@@ -1,10 +1,10 @@
 import React from "react";
 
 import { WeatherAppShell } from "@/components/weather-app-shell";
-import { getDefaultWeatherRecord } from "@/lib/weather-data";
+import { loadWeatherTimeline } from "@/lib/weather-data";
 
 export default async function Home() {
-  const record = await getDefaultWeatherRecord();
+  const records = await loadWeatherTimeline();
 
-  return <WeatherAppShell record={record} />;
+  return <WeatherAppShell records={records} />;
 }

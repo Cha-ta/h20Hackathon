@@ -347,27 +347,96 @@ a {
   height: 118px;
 }
 
-/* === Timeline slider directly under scene === */
-.timeline-bar-wrapper {
+/* === Timeline controls === */
+.timeline-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   width: 100%;
   max-width: 880px;
   padding: 0 16px;
 }
 
-.timeline-bar {
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
-  overflow: hidden;
+.timeline-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  flex-shrink: 0;
 }
 
-.timeline-bar::before {
-  content: "";
-  display: block;
-  width: 18%;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, #fff1ca 0%, var(--accent) 100%);
+.timeline-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.timeline-btn:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+.timeline-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.timeline-slider {
+  flex: 1;
+  height: 8px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+}
+
+.timeline-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fff1ca 0%, var(--accent) 100%);
+  box-shadow: 0 0 14px rgba(255, 217, 140, 0.55), 0 2px 6px rgba(0, 0, 0, 0.25);
+  cursor: grab;
+  border: none;
+}
+
+.timeline-slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+}
+
+.timeline-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fff1ca 0%, var(--accent) 100%);
+  box-shadow: 0 0 14px rgba(255, 217, 140, 0.55), 0 2px 6px rgba(0, 0, 0, 0.25);
+  cursor: grab;
+  border: none;
+}
+
+.timeline-readout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 880px;
+  padding: 0 16px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.timeline-readout__current {
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
 }
 
 /* === Metrics panel === */
@@ -434,6 +503,11 @@ a {
   .site-nav {
     gap: 16px;
     flex-wrap: wrap;
+  }
+
+  .timeline-controls,
+  .timeline-readout {
+    max-width: 100%;
   }
 
   .hero-stat-row,

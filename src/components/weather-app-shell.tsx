@@ -1,13 +1,12 @@
-import { describeWeatherState } from "@/lib/weather-state";
 import type { NormalizedWeatherRecord } from "@/lib/weather-types";
 
-import { WeatherSceneShell } from "./weather-scene-shell";
+import { WeatherTimelineSlider } from "./weather-timeline-slider";
 
 type WeatherAppShellProps = {
-  record: NormalizedWeatherRecord;
+  records: NormalizedWeatherRecord[];
 };
 
-export function WeatherAppShell({ record }: WeatherAppShellProps) {
+export function WeatherAppShell({ records }: WeatherAppShellProps) {
   return (
     <main className="page-shell">
       <section className="website-shell" aria-label="Website homepage shell">
@@ -29,45 +28,7 @@ export function WeatherAppShell({ record }: WeatherAppShellProps) {
             <h1 className="hero-title">San Joaquin County weather timeline</h1>
           </div>
 
-          <div className="hero-stat-row" aria-label="Default weather snapshot">
-            <article className="hero-stat hero-stat--primary">
-              <span className="hero-stat__label">Default Date</span>
-              <strong>{record.label}</strong>
-            </article>
-            <article className="hero-stat">
-              <span className="hero-stat__label">Reservoir</span>
-              <strong>{record.metrics.reservoir}%</strong>
-            </article>
-            <article className="hero-stat">
-              <span className="hero-stat__label">Condition</span>
-              <strong>{describeWeatherState(record.state)}</strong>
-            </article>
-          </div>
-
-          <div className="hero-scene-panel">
-            <WeatherSceneShell weatherState={record.state} />
-          </div>
-
-          <div className="timeline-bar-wrapper" aria-label="Timeline slider placeholder">
-            <div className="timeline-bar" />
-          </div>
-
-          <section className="metrics-panel" aria-label="Weather metrics">
-            <div className="metrics-grid">
-              <div>
-                <span>Snowpack</span>
-                <strong>{record.metrics.snowpack}%</strong>
-              </div>
-              <div>
-                <span>Precip</span>
-                <strong>{record.metrics.precipitation}%</strong>
-              </div>
-              <div>
-                <span>Reservoir</span>
-                <strong>{record.metrics.reservoir}%</strong>
-              </div>
-            </div>
-          </section>
+          <WeatherTimelineSlider records={records} />
         </section>
       </section>
     </main>
