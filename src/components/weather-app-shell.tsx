@@ -15,6 +15,20 @@ export function WeatherAppShell({ records }: WeatherAppShellProps) {
             <span className="site-mark__droplet" aria-hidden="true">💧</span>
             <span>h2Show</span>
           </div>
+          <div className="site-credits">
+            <span>
+              Created by:{" "}
+              <a href="https://github.com/nickaustinn" target="_blank" rel="noopener noreferrer">
+                Nick Austin
+              </a>
+            </span>
+            <span>
+              Created by:{" "}
+              <a href="https://github.com/cha-ta" target="_blank" rel="noopener noreferrer">
+                Daniel Villasenor
+              </a>
+            </span>
+          </div>
         </header>
 
         <section className="hero-stage">
