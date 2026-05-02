@@ -66,15 +66,15 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| EXP-01 | Phase 2 | Pending |
+| EXP-01 | Phase 01.1 | Complete |
 | EXP-02 | Phase 4 | Pending |
 | EXP-03 | Phase 3 | Pending |
 | TIME-01 | Phase 2 | Pending |
 | TIME-02 | Phase 2 | Pending |
-| TIME-03 | Phase 1 | Pending |
+| TIME-03 | Phase 1 | Complete |
 | TIME-04 | Phase 2 | Pending |
-| DATA-01 | Phase 1 | Pending |
-| DATA-02 | Phase 1 | Pending |
+| DATA-01 | Phase 1 | Complete |
+| DATA-02 | Phase 1 | Complete |
 | DATA-03 | Phase 2 | Pending |
 | VIS-01 | Phase 3 | Pending |
 | VIS-02 | Phase 3 | Pending |
@@ -82,9 +82,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | VIS-04 | Phase 3 | Pending |
 | VIS-05 | Phase 3 | Pending |
 | VIS-06 | Phase 3 | Pending |
-| TECH-01 | Phase 1 | Pending |
-| TECH-02 | Phase 1 | Pending |
-| TECH-03 | Phase 1 | Pending |
+| TECH-01 | Phase 1 | Complete |
+| TECH-02 | Phase 1 | Complete |
+| TECH-03 | Phase 1 | Complete |
 
 **Coverage:**
 - v1 requirements: 19 total
@@ -93,4 +93,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-05-02*
-*Last updated: 2026-05-02 after initial definition*
+*Last updated: 2026-05-02 after Phase 01.1 completion*

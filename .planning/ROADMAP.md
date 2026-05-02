@@ -14,7 +14,8 @@ This roadmap prioritizes visual fidelity to `weather.jpeg` while still building 
 | Phase | Name | Goal | Requirements | Success Criteria |
 |-------|------|------|--------------|------------------|
 | 1 | Foundation Setup | Establish the Next.js/TypeScript app, load and sort the dataset, and prove the timeline starts at January 1, 2016 | TECH-01, TECH-02, TECH-03, DATA-01, DATA-02, TIME-03 | 4 |
-| 2 | Timeline Experience | Build the core single-page experience with visible date state, slider scrubbing, and swipe navigation | EXP-01, TIME-01, TIME-02, TIME-04, DATA-03 | 4 |
+| 01.1 | Website Layout Correction | Convert the current app-like shell into a website-format presentation while preserving the Phase 1 data foundation | EXP-01 | 4 |
+| 2 | Timeline Experience | Build the core single-page experience with visible date state, slider scrubbing, and swipe navigation | TIME-01, TIME-02, TIME-04, DATA-03 | 4 |
 | 3 | 3D Weather Scene | Create the generic 3D React city and connect weather-state changes for sun, rain, snow, hail, and flood conditions | EXP-03, VIS-01, VIS-02, VIS-03, VIS-04, VIS-05, VIS-06 | 4 |
 | 4 | Reference Match Polish | Refine the layout, atmosphere, and visual composition so the final result closely matches `weather.jpeg` | EXP-02 | 4 |
 
@@ -32,11 +33,23 @@ This roadmap prioritizes visual fidelity to `weather.jpeg` while still building 
 3. The initial selected record resolves to January 1, 2016.
 4. The data layer exposes the selected record cleanly to the UI.
 
+### Phase 01.1: make the design a website format not a app layout (INSERTED)
+
+**Goal:** Replace the current app-style mobile card composition with a website-format layout while keeping the January 1, 2016 default state, weather shell, and future 3D/timeline regions intact.
+**Requirements:** EXP-01
+**Depends on:** Phase 1
+
+**Success criteria:**
+1. The experience is presented as a website layout rather than a framed app-card mockup.
+2. The page still renders from the normalized January 1, 2016 default weather record.
+3. The scene area remains prominent and supports later 3D and timeline work without another shell rewrite.
+4. Desktop and laptop presentation feel intentional, with room for later mobile adaptation rather than a mobile-first card centered on a blank background.
+
 ### Phase 2: Timeline Experience
 
 **Goal:** Deliver the core interaction loop so users can move through time and read the current state from a polished single-page interface.
 
-**Requirements:** EXP-01, TIME-01, TIME-02, TIME-04, DATA-03
+**Requirements:** TIME-01, TIME-02, TIME-04, DATA-03
 
 **Success criteria:**
 1. The app is presented as a single focused demo page.
@@ -72,7 +85,7 @@ This roadmap prioritizes visual fidelity to `weather.jpeg` while still building 
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| EXP-01 | Phase 2 | Pending |
+| EXP-01 | Phase 01.1 | Pending |
 | EXP-02 | Phase 4 | Pending |
 | EXP-03 | Phase 3 | Pending |
 | TIME-01 | Phase 2 | Pending |
