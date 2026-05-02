@@ -23,46 +23,36 @@ export function WeatherAppShell({ record }: WeatherAppShellProps) {
           </nav>
         </header>
 
-        <section className="hero-grid">
+        <section className="hero-stage">
           <div className="hero-copy">
             <p className="hero-kicker">Historical Weather Replay</p>
-            <h1 className="hero-title">A website-format weather timeline for San Joaquin County.</h1>
-            <p className="hero-summary">
-              The experience opens at the earliest record in the archive and uses a scene-first layout that will
-              support slider, swipe, and 3D weather transitions in later phases.
-            </p>
+            <h1 className="hero-title">San Joaquin County weather timeline</h1>
+          </div>
 
-            <div className="hero-stat-row" aria-label="Default weather snapshot">
-              <article className="hero-stat hero-stat--primary">
-                <span className="hero-stat__label">Default Date</span>
-                <strong>{record.label}</strong>
-              </article>
-              <article className="hero-stat">
-                <span className="hero-stat__label">Reservoir</span>
-                <strong>{record.metrics.reservoir}%</strong>
-              </article>
-              <article className="hero-stat">
-                <span className="hero-stat__label">Condition</span>
-                <strong>{describeWeatherState(record.state)}</strong>
-              </article>
-            </div>
+          <div className="hero-stat-row" aria-label="Default weather snapshot">
+            <article className="hero-stat hero-stat--primary">
+              <span className="hero-stat__label">Default Date</span>
+              <strong>{record.label}</strong>
+            </article>
+            <article className="hero-stat">
+              <span className="hero-stat__label">Reservoir</span>
+              <strong>{record.metrics.reservoir}%</strong>
+            </article>
+            <article className="hero-stat">
+              <span className="hero-stat__label">Condition</span>
+              <strong>{describeWeatherState(record.state)}</strong>
+            </article>
           </div>
 
           <div className="hero-scene-panel">
-            <div className="scene-panel__meta">
-              <span className="scene-panel__city">San Joaquin County</span>
-              <span className="scene-panel__state">{describeWeatherState(record.state)}</span>
-            </div>
             <WeatherSceneShell weatherState={record.state} />
           </div>
-        </section>
 
-        <section className="support-grid">
+          <div className="timeline-bar-wrapper" aria-label="Timeline slider placeholder">
+            <div className="timeline-bar" />
+          </div>
+
           <section className="metrics-panel" aria-label="Weather metrics">
-            <div className="section-heading">
-              <p className="section-kicker">Water Indicators</p>
-              <h2>January 2016 baseline metrics</h2>
-            </div>
             <div className="metrics-grid">
               <div>
                 <span>Snowpack</span>
@@ -77,18 +67,6 @@ export function WeatherAppShell({ record }: WeatherAppShellProps) {
                 <strong>{record.metrics.reservoir}%</strong>
               </div>
             </div>
-          </section>
-
-          <section className="timeline-placeholder" aria-label="Timeline placeholder">
-            <div className="section-heading">
-              <p className="section-kicker">Timeline System</p>
-              <h2>Website controls arrive in Phase 2</h2>
-            </div>
-            <p>
-              The timeline shell is now part of the website layout rather than trapped inside a phone-like card. The
-              slider and swipe interactions will attach to this wider desktop-friendly structure next.
-            </p>
-            <div className="timeline-bar" />
           </section>
         </section>
       </section>
