@@ -36,7 +36,6 @@ a {
   padding: 32px;
 }
 
-/* Big background card stripped — now just a transparent layout container */
 .website-shell {
   width: min(100%, 1240px);
   margin: 0 auto;
@@ -696,4 +695,264 @@ a {
   .scene-shell {
     min-height: 400px;
   }
+}
+
+/* ── Weather state: sky backgrounds ──────────────────────────────────────── */
+
+.scene-shell--sun {
+  background:
+    radial-gradient(circle at 72% 18%, rgba(255, 243, 188, 0.5), transparent 35%),
+    linear-gradient(180deg, #a8c4e8 0%, #7ba3d4 50%, #5d7fa8 100%);
+}
+
+.scene-shell--drought {
+  background:
+    radial-gradient(circle at 72% 14%, rgba(255, 180, 60, 0.6), transparent 38%),
+    linear-gradient(180deg, #c8955a 0%, #a87040 50%, #7a5030 100%);
+}
+
+.scene-shell--clear {
+  background:
+    radial-gradient(circle at 68% 22%, rgba(220, 230, 255, 0.25), transparent 28%),
+    linear-gradient(180deg, #3a4a6a 0%, #2d3a55 60%, #1e2840 100%);
+}
+
+.scene-shell--overcast {
+  background:
+    linear-gradient(180deg, #5a6070 0%, #454d5c 50%, #353d4c 100%);
+}
+
+.scene-shell--rain {
+  background:
+    linear-gradient(180deg, #3a4255 0%, #2d3448 50%, #1e2438 100%);
+}
+
+.scene-shell--snow {
+  background:
+    linear-gradient(180deg, #6a7585 0%, #8090a0 30%, #a0b0c0 100%);
+}
+
+.scene-shell--hail {
+  background:
+    linear-gradient(180deg, #2a3040 0%, #1e2535 50%, #141a28 100%);
+}
+
+.scene-shell--flood {
+  background:
+    linear-gradient(180deg, #2a3a55 0%, #1e2d45 50%, #0e1a30 100%);
+}
+
+/* ── Moon ─────────────────────────────────────────────────────────────────── */
+
+.scene-moon {
+  position: absolute;
+  width: 88px;
+  height: 88px;
+  top: 48px;
+  right: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 36%, #f0ecd8 0%, #d4cdb0 55%, #b8b098 100%);
+  box-shadow:
+    0 0 40px rgba(220, 215, 180, 0.45),
+    0 0 80px rgba(200, 195, 160, 0.2);
+}
+
+.scene-shell--overcast .scene-moon,
+.scene-shell--rain .scene-moon,
+.scene-shell--hail .scene-moon {
+  opacity: 0.35;
+  filter: blur(2px);
+}
+
+/* ── Cloud overrides by state ─────────────────────────────────────────────── */
+
+.scene-shell--overcast .scene-cloud,
+.scene-shell--rain .scene-cloud,
+.scene-shell--hail .scene-cloud,
+.scene-shell--flood .scene-cloud {
+  background: linear-gradient(180deg, #6a7080 0%, #505868 100%);
+}
+
+.scene-shell--snow .scene-cloud {
+  background: linear-gradient(180deg, #c8d4e0 0%, #a8b8c8 100%);
+}
+
+.scene-cloud--extra {
+  width: 220px;
+  height: 64px;
+  top: 168px;
+  left: 50%;
+  transform: translateX(-20%);
+  animation-duration: 9s;
+  animation-direction: alternate-reverse;
+}
+
+.scene-cloud--extra::before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  border-radius: inherit;
+  width: 100px;
+  height: 100px;
+  left: 24px;
+  top: -48px;
+}
+
+.scene-cloud--extra::after {
+  content: "";
+  position: absolute;
+  background: inherit;
+  border-radius: inherit;
+  width: 80px;
+  height: 80px;
+  right: 28px;
+  top: -36px;
+}
+
+/* ── Sun overrides by state ───────────────────────────────────────────────── */
+
+.scene-shell--drought .scene-sun {
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle, #fff0a0 0%, #ffb830 50%, rgba(255, 184, 48, 0) 75%);
+  box-shadow: 0 0 120px rgba(255, 184, 48, 0.7);
+  filter: blur(2px);
+}
+
+/* ── Particles ────────────────────────────────────────────────────────────── */
+
+.scene-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.particle {
+  position: absolute;
+  top: -10px;
+  border-radius: 999px;
+  animation: fall linear infinite;
+}
+
+.particle--rain {
+  width: 2px;
+  height: 18px;
+  background: linear-gradient(180deg, rgba(180, 210, 255, 0.9), rgba(140, 180, 255, 0.3));
+  transform: skewX(-12deg);
+}
+
+.particle--snow {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 50%;
+  filter: blur(0.5px);
+  animation-name: fall-snow;
+}
+
+.particle--hail {
+  width: 5px;
+  height: 5px;
+  background: rgba(200, 220, 255, 0.95);
+  border-radius: 50%;
+  box-shadow: 0 0 3px rgba(200, 220, 255, 0.5);
+  animation-name: fall-hail;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10px) skewX(-12deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(560px) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fall-snow {
+  0% {
+    transform: translateY(-10px) translateX(0);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  50% { transform: translateY(280px) translateX(14px); }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(560px) translateX(-8px);
+    opacity: 0;
+  }
+}
+
+@keyframes fall-hail {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% {
+    transform: translateY(560px);
+    opacity: 0;
+  }
+}
+
+/* ── Flood water ──────────────────────────────────────────────────────────── */
+
+.scene-flood {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(
+    180deg,
+    rgba(40, 100, 180, 0.55) 0%,
+    rgba(20, 70, 150, 0.8) 100%
+  );
+  border-radius: 0 0 24px 24px;
+  animation: flood-ripple 3s ease-in-out infinite;
+  z-index: 3;
+}
+
+@keyframes flood-ripple {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(1.04); }
+}
+
+/* ── Building tints by state ──────────────────────────────────────────────── */
+
+.scene-shell--rain .building__face--front,
+.scene-shell--flood .building__face--front {
+  filter: brightness(0.75) saturate(0.8);
+}
+
+.scene-shell--drought .building__face--front {
+  filter: brightness(1.1) sepia(0.3);
+}
+
+.scene-shell--snow .building__face--front {
+  filter: brightness(0.9) saturate(0.6);
+}
+
+.scene-shell--hail .building__face--front {
+  filter: brightness(0.6) saturate(0.7);
+}
+
+/* ── Streetlamp glow by state ─────────────────────────────────────────────── */
+
+.scene-shell--rain .scene-lamp::before,
+.scene-shell--flood .scene-lamp::before,
+.scene-shell--hail .scene-lamp::before {
+  box-shadow: 0 0 22px rgba(255, 217, 122, 0.9);
+  background: radial-gradient(circle, #fff8e0 0%, #ffd97a 50%, rgba(255, 217, 122, 0) 100%);
+}
+
+.scene-shell--snow .scene-lamp::before {
+  box-shadow: 0 0 28px rgba(220, 240, 255, 0.8);
+  background: radial-gradient(circle, #e8f4ff 0%, #b8d8ff 50%, rgba(184, 216, 255, 0) 100%);
 }

@@ -3,30 +3,37 @@ import type { WeatherMetrics, WeatherState } from "./weather-types";
 export function deriveWeatherState(metrics: WeatherMetrics): WeatherState {
   const { snowpack, precipitation, reservoir } = metrics;
 
-  if (reservoir >= 85 && precipitation >= 110) {
+  // Flood: very high reservoir + high precip
+  if (reservoir >= 90 && precipitation >= 110) {
     return "flood";
   }
 
+  // Snow: high snowpack + decent precip
   if (snowpack >= 120 && precipitation >= 90) {
     return "snow";
   }
 
-  if (snowpack >= 90 && precipitation >= 110 && reservoir >= 50 && reservoir < 85) {
+  // Hail: high snowpack + high precip, mid reservoir
+  if (snowpack >= 90 && precipitation >= 110 && reservoir >= 70 && reservoir < 90) {
     return "hail";
   }
 
+  // Rain: high precip
   if (precipitation >= 110) {
     return "rain";
   }
 
-  if (precipitation < 70 && reservoir < 50) {
+  // Drought: low precip + low-ish reservoir (relaxed threshold)
+  if (precipitation < 70 && reservoir < 70) {
     return "drought";
   }
 
+  // Sun: low precip, decent reservoir, low snowpack
   if (precipitation < 90 && reservoir >= 70 && snowpack < 70) {
     return "sun";
   }
 
+  // Clear: moderate everything
   if (precipitation >= 90 && precipitation <= 110 && snowpack < 90) {
     return "clear";
   }
