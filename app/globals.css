@@ -502,7 +502,7 @@ a {
   height: 36px;
   background: #2d3a55;
   border-radius: 2px;
-  z-index: 5;
+  z-index: 2;
 }
 
 .scene-lamp::before {
