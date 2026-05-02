@@ -11,18 +11,59 @@ export function WeatherSceneShell({ weatherState }: WeatherSceneShellProps) {
       className="scene-shell"
       data-weather-state={weatherState}
     >
-      <div className="scene-cloud" />
+      <div className="scene-sun" />
+      <div className="scene-cloud scene-cloud--front" />
       <div className="scene-cloud scene-cloud--back" />
+
       <div className="scene-stage">
-        <div className="scene-glow" />
-        <div className="scene-platform" />
-        <div className="scene-skyline">
-          <div className="scene-building scene-building--a" />
-          <div className="scene-building scene-building--b" />
-          <div className="scene-building scene-building--c" />
-          <div className="scene-building scene-building--d" />
-          <div className="scene-building scene-building--e" />
+        <div className="scene-base">
+          <div className="scene-base__top" />
+          <div className="scene-base__side scene-base__side--left" />
+          <div className="scene-base__side scene-base__side--right" />
         </div>
+
+        <div className="scene-city">
+          {/* Tall clock tower (Big Ben style) */}
+          <div className="building building--tower">
+            <div className="building__roof building__roof--spire" />
+            <div className="building__face building__face--front">
+              <div className="building__clock" />
+              <div className="building__windows building__windows--tower" />
+            </div>
+            <div className="building__face building__face--side" />
+          </div>
+
+          {/* Wide main building */}
+          <div className="building building--main">
+            <div className="building__roof" />
+            <div className="building__face building__face--front">
+              <div className="building__windows building__windows--grid" />
+            </div>
+            <div className="building__face building__face--side" />
+          </div>
+
+          {/* Short building front-left */}
+          <div className="building building--short">
+            <div className="building__roof" />
+            <div className="building__face building__face--front">
+              <div className="building__windows building__windows--small" />
+            </div>
+            <div className="building__face building__face--side" />
+          </div>
+
+          {/* Bridge tower right */}
+          <div className="building building--bridge">
+            <div className="building__roof building__roof--peak" />
+            <div className="building__face building__face--front">
+              <div className="building__windows building__windows--arch" />
+            </div>
+            <div className="building__face building__face--side" />
+          </div>
+        </div>
+
+        {/* Streetlamps */}
+        <div className="scene-lamp scene-lamp--left" />
+        <div className="scene-lamp scene-lamp--right" />
       </div>
     </section>
   );
