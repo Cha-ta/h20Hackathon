@@ -264,6 +264,23 @@ a {
   height: 360px;
 }
 
+/* Dark grey ground — flat slab under the city */
+.scene-stage::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 420px;
+  height: 26px;
+  background: linear-gradient(180deg, #3a3f4a 0%, #25292f 100%);
+  border-radius: 8px;
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  z-index: 0;
+}
+
 /* Wooden isometric base */
 .scene-base {
   position: absolute;
@@ -309,11 +326,12 @@ a {
 /* City layout */
 .scene-city {
   position: absolute;
-  bottom: 60px;
+  bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
   width: 380px;
   height: 280px;
+  z-index: 1;
 }
 
 /* Generic building */
@@ -497,7 +515,7 @@ a {
 /* Streetlamps */
 .scene-lamp {
   position: absolute;
-  bottom: 80px;
+  bottom: 38px;
   width: 4px;
   height: 36px;
   background: #2d3a55;

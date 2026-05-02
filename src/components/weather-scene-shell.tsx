@@ -15,13 +15,13 @@ export function WeatherSceneShell({ weatherState }: WeatherSceneShellProps) {
 
     container.innerHTML = "";
 
-const needsParticles = ["rain", "snow", "hail", "flood"].includes(weatherState);
+    const needsParticles = ["rain", "snow", "hail", "flood"].includes(weatherState);
     if (!needsParticles) return;
 
-const count = weatherState === "rain" ? 60 
-  : weatherState === "flood" ? 80
-  : weatherState === "hail" ? 40 
-  : 80;
+    const count = weatherState === "rain" ? 60
+      : weatherState === "flood" ? 80
+      : weatherState === "hail" ? 40
+      : 80;
 
     for (let i = 0; i < count; i++) {
       const p = document.createElement("div");
@@ -63,12 +63,6 @@ const count = weatherState === "rain" ? 60
 
       {/* City stage */}
       <div className="scene-stage">
-        <div className="scene-base">
-          <div className="scene-base__top" />
-          <div className="scene-base__side scene-base__side--left" />
-          <div className="scene-base__side scene-base__side--right" />
-        </div>
-
         <div className="scene-city">
           {/* Clock tower */}
           <div className="building building--tower">
