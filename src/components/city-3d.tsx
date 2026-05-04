@@ -363,6 +363,42 @@ function CelestialBody({ kind }: { kind: "sun" | "moon" }) {
   );
 }
 
+function FloodWater() {
+  // Target = half the avg victorian building top (avg height ~1.45 + avg roof ~0.65 ≈ 2.1; half ≈ 1.05).
+  const targetY = 1.05;
+  const baseY = 0.04; // sits flush with the top of the stone street
+  const startY = 0.06;
+  const ref = useRef<THREE.Mesh>(null);
+  const surfaceY = useRef(startY);
+
+  useFrame((_, delta) => {
+    const mesh = ref.current;
+    if (!mesh) return;
+    if (surfaceY.current < targetY) {
+      const remaining = targetY - surfaceY.current;
+      surfaceY.current += Math.min(remaining, delta * 0.35);
+    }
+    const depth = Math.max(0.002, surfaceY.current - baseY);
+    mesh.scale.y = depth;
+    mesh.position.y = baseY + depth / 2;
+  });
+
+  // Geometry is unit-height; we scale on Y so the box grows from the floor up.
+  return (
+    <mesh ref={ref} position={[0, baseY, 0]}>
+      <boxGeometry args={[8.6, 1, 8.6]} />
+      <meshStandardMaterial
+        color="#4a7aa3"
+        transparent
+        opacity={0.78}
+        roughness={0.2}
+        metalness={0.15}
+        depthWrite={false}
+      />
+    </mesh>
+  );
+}
+
 function Precipitation({ kind }: { kind: "rain" | "snow" | "hail" }) {
   const ref = useRef<InstancedMesh>(null);
   const count = kind === "snow" ? 260 : kind === "hail" ? 130 : 220;
@@ -474,19 +510,8 @@ function Diorama({ weatherState }: { weatherState: string }) {
         <meshStandardMaterial color={groundColor} roughness={0.85} />
       </mesh>
 
-      {/* Flood water plane (rises above stone when flooded) */}
-      {showFlood && (
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.32, 0]}>
-          <planeGeometry args={[8.6, 8.6]} />
-          <meshStandardMaterial
-            color="#4a7aa3"
-            transparent
-            opacity={0.7}
-            roughness={0.25}
-            metalness={0.1}
-          />
-        </mesh>
-      )}
+      {/* Flood water — animates from low to ~half avg building height when flooded */}
+      {showFlood && <FloodWater key="flood" />}
 
       {/* Landmarks */}
       <ClockTower position={[-1.6, 0.04, 0.2]} />
