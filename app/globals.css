@@ -252,31 +252,10 @@ a {
   top: -24px;
 }
 
-/* Stage holds city + base, sits at the bottom */
+/* Stage now fills the scene-shell — 3D canvas handles base + lights + sky decor */
 .scene-stage {
   position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 460px;
-  height: 360px;
-}
-
-/* Dark grey ground — flat slab under the city */
-.scene-stage::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 420px;
-  height: 26px;
-  background: linear-gradient(180deg, #3a3f4a 0%, #25292f 100%);
-  border-radius: 8px;
-  box-shadow:
-    0 8px 18px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  z-index: 0;
+  inset: 0;
 }
 
 /* Wooden isometric base */
@@ -330,6 +309,25 @@ a {
   width: 380px;
   height: 280px;
   z-index: 1;
+}
+
+/* 3D city canvas — fills the scene stage; user can orbit it */
+.city-3d-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: grab;
+}
+
+.city-3d-canvas:active {
+  cursor: grabbing;
+}
+
+.city-3d-canvas canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  outline: none;
 }
 
 /* Generic building */
